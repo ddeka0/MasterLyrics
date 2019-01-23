@@ -1,12 +1,15 @@
+
+# dont ignore gitignore
+!.gitignore
+
 .DS_Store
 node_modules/
 /dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-client/node_modules/
-server/node_modules/
-server/music.sqlite
+/test/unit/coverage/
+
 # Editor directories and files
 .idea
 .vscode
