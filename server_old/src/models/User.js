@@ -1,11 +1,11 @@
 module.exports = (sequelize, DataTypes)=> {
 	console.log("pqr")
-	var table = sequelize.define("Song",{
-		songName: {
+	var table = sequelize.define("User",{
+		email: {
 			type: DataTypes.STRING,
 			unique: true
 		},
-		lyric: {
+		password: {
 			type: DataTypes.STRING
 		}
 	})
