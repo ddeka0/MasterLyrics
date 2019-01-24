@@ -1,14 +1,15 @@
 # client
 
-> A Vue.js project using vue cli 3
-> Backend is based on SQLite
-> Group Members:-
-> > Avais Ahmad
-> > Debashish Deka
-> > Dhananjay Sharma
-> > Lokesh Yadav
-> > Priti Sharma
-> > Sayali Borkar
+> A Vue.js project using vue cli 3<br>
+> Backend is based on SQLite<br>
+> Group Members:-<br>
+> > Avais Ahmad <br>
+> > Debashish Deka<br>
+> > Dhananjay Sharma<br>
+> > Lokesh Yadav<br>
+> > Priti Sharma<br>
+> > Sayali Borkar<br>
+
 
 ## Build Setup
 
