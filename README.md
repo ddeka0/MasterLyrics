@@ -1,6 +1,14 @@
 # client
 
-> A Vue.js project
+> A Vue.js project using vue cli 3
+> Backend is based on SQLite
+> Group Members:-
+> > Avais Ahmad
+> > Debashish Deka
+> > Dhananjay Sharma
+> > Lokesh Yadav
+> > Priti Sharma
+> > Sayali Borkar
 
 ## Build Setup
 
@@ -8,8 +16,11 @@
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# running client (serve with hot reload at localhost:8080)
 npm run dev
+
+# running server
+npm start
 
 # build for production with minification
 npm run build
