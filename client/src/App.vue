@@ -1,12 +1,27 @@
 <template>
+<v-app>
+  <toolbar></toolbar>
+  <nav-drawer></nav-drawer>
 	<div id="app">
 		<router-view></router-view>
 	</div>
+  <footer-comp></footer-comp>
+  </v-app>
 </template>
 
 <script>
+
+import Toolbar from './components/Toolbar'
+import FooterComp from './components/Footer'
+import navDrawer from './components/navDrawer'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Toolbar,
+    FooterComp,
+    navDrawer
+  }
 }
 </script>
 

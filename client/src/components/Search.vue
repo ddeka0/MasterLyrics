@@ -4,20 +4,14 @@
 		<v-flex xs6 offset-xs3>
 			<div class="white elevation-2">
 				<v-toolbar flat dense class="cyan" dark>
-					<v-toolbar-title>Search</v-toolbar-title>
+					<v-toolbar-title>Search Your Song</v-toolbar-title>
 				</v-toolbar>
 				<div class="pl-4 pr-4 pt-2 pb-2">
 						<input 
 						type="text"
 						name="songName"
 						v-model="songName"
-						placeholder="enter">
-						<br>					
-					<input 
-						type="text"
-						name="lyric"
-						v-model="lyric"
-						placeholder="enter">
+						placeholder="Search">
 					<br>
 					<div class="error" v-html="error"></div>
 					<v-btn class="cyan" @click="register">Search</v-btn>
@@ -34,7 +28,6 @@ export default {
 	data () {
 		return {
 			songName:"",
-			lyric:"",
 			error: null
 		}
 	},
@@ -43,7 +36,6 @@ export default {
 			try {
 				const response = await AuthenticationService.register({
 					songName: this.songName,
-					lyric: this.lyric
 				})
 				console.log(response.data)
 				this.error = response.data
