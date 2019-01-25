@@ -12,7 +12,7 @@
 						name="songName"
 						v-model="songName"
 						placeholder="enter">
-					<br>
+						<br>					
 					<input 
 						type="text"
 						name="lyric"
