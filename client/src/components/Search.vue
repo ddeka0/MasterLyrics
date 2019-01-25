@@ -1,21 +1,26 @@
 <template>
 <v-container grid-list-xl text-xs-center>
 	<v-layout row wrap>
-		<v-flex xs6 offset-xs3>
+		<v-flex flat xs6 offset-xs3>
 			<div class="white elevation-2">
 				<v-toolbar flat dense class="cyan" dark>
 					<v-toolbar-title>Search Your Song</v-toolbar-title>
 				</v-toolbar>
-				<div class="pl-4 pr-4 pt-2 pb-2">
-						<input 
-						type="text"
-						name="songName"
-						v-model="songName"
-						placeholder="Search">
-					<br>
+				 <v-form>
+					<v-container>
+						<v-flex >
+							<v-text-field
+								v-model="songName"
+								label="Search"
+								required
+								full-width background-color="cyan lighten-5"
+							></v-text-field>
+						</v-flex>
+						<br>
 					<div class="error" v-html="error"></div>
-					<v-btn class="cyan" @click="register">Search</v-btn>
-				</div>
+					<v-btn depressed dark class="cyan" @click="register">Search</v-btn>
+				</v-container>
+			</v-form>
 			</div>
 		</v-flex>
 	</v-layout>

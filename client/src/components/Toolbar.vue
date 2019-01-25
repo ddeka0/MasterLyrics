@@ -1,5 +1,5 @@
 <template>
-<v-toolbar app dark color="primary">
+<v-toolbar flat app dark color="primary">
   <v-toolbar-side-icon>
     <v-img src="/static/song_icon.png" aspect-ratio="1 "></v-img>
   </v-toolbar-side-icon>

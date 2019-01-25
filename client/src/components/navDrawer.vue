@@ -36,6 +36,7 @@
       <v-list-tile
         v-for="item in items"
         :key="item.title"
+        @click="drclick"
       >
         <v-list-tile-action>
           <v-icon>{{ item.icon }}</v-icon>
@@ -57,13 +58,18 @@
       return {
           drawer: true,
         items: [
-          { title: 'Dashboard', icon: 'dashboard' },
-          { title: 'Account', icon: 'account_box' },
-          { title: 'Admin', icon: 'gavel' }
+          { title: 'Home', icon: 'home' },
+          { title: 'A to Z list', icon: 'sort_by_alpha' },
+          { title: 'About', icon: 'info' }
         ],
         mini :true,
         right: null
       }
+    },
+    methods: {
+    async drclick () {
+        
+    }
     }
   }
 </script>
