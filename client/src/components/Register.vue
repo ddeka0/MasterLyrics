@@ -32,7 +32,25 @@
 							></v-text-field>
 						</v-flex>
 						<br>
-					<div class="information" v-html="error"></div>
+					<!-- <div class="information" v-html="error"></div> -->
+					
+						<v-alert
+						v-model="alert"
+						dismissible
+						type="error"
+						transition="scale-transition"
+						>
+						{{error}}
+						</v-alert>
+						<v-alert
+						v-model="alert2"
+						dismissible
+						type="success"
+						transition="scale-transition"
+						>
+						You are successfully Registered!
+						</v-alert>
+					
 					<v-btn depressed dark class="success" @click="register">Register</v-btn>
 				</v-container>
 			</v-form>
@@ -51,6 +69,8 @@ export default {
 			password:"",
 			error: null,
 			show2: false,
+			alert: false,	// for error alert
+			alert2: false,	// for success alert
 			rules: {
 			required: value => !!value || 'Required.',
 			min: v => v.length >= 8 || 'Min 8 characters',
@@ -67,8 +87,13 @@ export default {
 				})
 				console.log(response.data)
 				this.error = ""
+				this.alert = false
+				this.alert2 = true
 			}catch(err) {
 				this.error = err.response.data.error
+				this.error = this.error.replace(/<br>/g, " \n ")
+				this.alert2 = false
+				this.alert = true
 			}
 		}
 	}

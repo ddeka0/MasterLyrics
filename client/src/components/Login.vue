@@ -32,7 +32,26 @@
 							></v-text-field>
 						</v-flex>
 						<br>
-					<div class="information" v-html="error"></div>
+					<!-- <div class="information" v-html="error"></div> -->
+
+					<v-alert
+						v-model="alert"
+						dismissible
+						type="error"
+						transition="scale-transition"
+						>
+						{{error}}
+						</v-alert>
+						<v-alert
+						v-model="alert2"
+						dismissible
+						type="success"
+						transition="scale-transition"
+						to="/"
+						>
+						You are successfully Logged in!
+						</v-alert>
+
 					<v-btn depressed dark class="deep-orange" @click="login">Login</v-btn>
 				</v-container>
 			</v-form>
@@ -51,6 +70,8 @@ export default {
 			password:"",
 			error: null,
 			show2: false,
+			alert: false,	// for error alert
+			alert2: false,	// for success alert
 			rules: {
 			required: value => !!value || 'Required.',
 			min: v => v.length >= 8 || 'Min 8 characters',
@@ -69,8 +90,12 @@ export default {
 				// redirect to search page
 				// hide login tab and display user name
 				this.error = ""
+				this.alert = false
+				this.alert2 = true
 			}catch(err) {
 				this.error = err.response.data.error
+				this.alert2 = false
+				this.alert = true
 			}
 		}
 	}

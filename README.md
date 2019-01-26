@@ -1,4 +1,4 @@
-# client
+# MASTER लिरिक्स
 
 > A Vue.js project using cli 2<br>
 > Backend is based on SQLite<br>
