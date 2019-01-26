@@ -9,9 +9,12 @@
         <span>Lyrics</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn depressed color="success">Register</v-btn>
+
+    <v-btn depressed color="success">
+      <router-link to="/register" tag="button">Register</router-link>
+    </v-btn>
     <v-btn depressed color="deep-orange">
-      <router-link to="/Login" tag="button">Login</router-link>
+      <router-link to="/login" tag="button">Login</router-link>
       </v-btn>
 </v-toolbar>
 
