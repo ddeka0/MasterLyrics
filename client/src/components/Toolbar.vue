@@ -10,7 +10,7 @@
     <v-toolbar-title class="headline ">
         <span class="font-weight-bold">
           MASTER</span>
-        <span>Lyrics</span>
+        <span class="font-weight-medium">लिरिक्स</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
 

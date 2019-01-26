@@ -3,7 +3,7 @@
 	<v-layout row wrap>
 		<v-flex flat xs6 offset-xs3>
 			<div class="white elevation-2">
-				<v-toolbar flat dense class="success lighten-2" dark>
+				<v-toolbar flat dense class="success lighten-1" dark>
 					<v-toolbar-title>Register</v-toolbar-title>
 				</v-toolbar>
 				 <v-form>
