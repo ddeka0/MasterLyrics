@@ -18,7 +18,7 @@
 						</v-flex>
 						<br>
 					<div class="error" v-html="error"></div>
-					<v-btn depressed dark class="cyan" @click="register">Search</v-btn>
+					<v-btn depressed dark class="cyan" @click="songSearch">Search</v-btn>
 				</v-container>
 			</v-form>
 			</div>
@@ -37,7 +37,7 @@ export default {
 		}
 	},
 	methods: {
-		async register () {
+		async songSearch () {
 			try {
 				const response = await AuthenticationService.register({
 					songName: this.songName,
@@ -54,6 +54,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-	color: red
+	color: rgb(255, 255, 255)
 }
 </style>

@@ -6,5 +6,8 @@ export default {
 	},
 	login (credentials) {
 		return Api().post("login", credentials)
+	},
+	songSearch (credentials) {
+		return Api().post("songSearch", credentials)
 	}
 }
