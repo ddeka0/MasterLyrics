@@ -17,7 +17,7 @@
         white--text
         xs12
       >
-        &copy;2019 — <strong>Group2</strong>
+        &copy;2019 — <strong>Group 2</strong>
       </v-flex>
     </v-layout>
   </v-footer>

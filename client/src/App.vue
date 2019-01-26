@@ -4,7 +4,9 @@
   <nav-drawer></nav-drawer>
 	<div id="app">
 		<router-view></router-view>
+
 	</div>
+  
   <footer-comp></footer-comp>
   </v-app>
 </template>
