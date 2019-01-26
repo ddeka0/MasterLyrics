@@ -17,7 +17,7 @@
 							></v-text-field>
 						</v-flex>
 						<br>
-					<div class="error" v-html="error"></div>
+					<div class="information" v-html="error"></div>
 					<v-btn depressed dark class="cyan" @click="songSearch">Search</v-btn>
 				</v-container>
 			</v-form>
@@ -29,6 +29,7 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import SongSearchService from '@/services/SongSearchService'
 export default {
 	data () {
 		return {
@@ -39,7 +40,7 @@ export default {
 	methods: {
 		async songSearch () {
 			try {
-				const response = await AuthenticationService.register({
+				const response = await SongSearchService.songSearch({
 					songName: this.songName,
 				})
 				console.log(response.data)
@@ -53,7 +54,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error {
-	color: rgb(255, 255, 255)
+.information {
+	color: blue
 }
 </style>

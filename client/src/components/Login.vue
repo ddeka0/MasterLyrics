@@ -32,7 +32,7 @@
 							></v-text-field>
 						</v-flex>
 						<br>
-					<div class="error" v-html="error"></div>
+					<div class="information" v-html="error"></div>
 					<v-btn depressed dark class="deep-orange" @click="login">Login</v-btn>
 				</v-container>
 			</v-form>
@@ -78,7 +78,7 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.error {
-	color: white
+.information {
+	color: blue
 }
 </style>
