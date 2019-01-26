@@ -10,8 +10,8 @@
 					<v-container>
 						<v-flex >
 							<v-text-field
-								v-model="username"
-								label="User Name"
+								v-model="email"
+								label="Email"
 								required
 								full-width background-color="deep-orange lighten-5"
 							></v-text-field>
@@ -33,7 +33,7 @@
 						</v-flex>
 						<br>
 					<div class="error" v-html="error"></div>
-					<v-btn depressed dark class="deep-orange" @click="register">Login</v-btn>
+					<v-btn depressed dark class="deep-orange" @click="login">Login</v-btn>
 				</v-container>
 			</v-form>
 			</div>
@@ -47,7 +47,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 export default {
 	data () {
 		return {
-			username:"",
+			email:"",
 			password:"",
 			error: null,
 			show2: false,
@@ -59,8 +59,19 @@ export default {
 			}
 	},
 	methods: {
-		async register () {
-			
+		async login () {
+			try {
+				const response = await AuthenticationService.login({
+					email: this.email,
+					password: this.password
+				})
+				console.log(response.data)
+				// redirect to search page
+				// hide login tab and display user name
+				this.error = ""
+			}catch(err) {
+				this.error = err.response.data.error
+			}
 		}
 	}
 }
@@ -68,6 +79,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-	color: red
+	color: white
 }
 </style>

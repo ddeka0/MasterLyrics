@@ -1,13 +1,13 @@
 module.exports = (sequelize, DataTypes)=> {
-	var table = sequelize.define("User",{
-		email: {
+	var table = sequelize.define("Song",{
+		songName: {
 			type: DataTypes.STRING,
 			unique: true
 		},
-		password: {
+		lyric: {
 			type: DataTypes.STRING
 		}
 	})
-	console.log("======= User table created =======")
+	console.log("======= Songs table created =======")
 	return table
 }

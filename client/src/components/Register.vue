@@ -10,8 +10,8 @@
 					<v-container>
 						<v-flex >
 							<v-text-field
-								v-model="username"
-								label="User Name"
+								v-model="email"
+								label="Email"
 								required
 								full-width background-color="success lighten-5"
 							></v-text-field>
@@ -47,7 +47,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 export default {
 	data () {
 		return {
-			username:"",
+			email:"",
 			password:"",
 			error: null,
 			show2: false,
@@ -60,7 +60,16 @@ export default {
 	},
 	methods: {
 		async register () {
-			
+			try {
+				const response = await AuthenticationService.register({
+					email: this.email,
+					password: this.password
+				})
+				console.log(response.data)
+				this.error = ""
+			}catch(err) {
+				this.error = err.response.data.error
+			}
 		}
 	}
 }
@@ -68,6 +77,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-	color: red
+	color: white
 }
 </style>

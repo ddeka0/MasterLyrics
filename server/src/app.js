@@ -22,7 +22,7 @@ routes.setRoutes(app)
 
 //sequelize.sequelize.sync
 
-sequelize.sync()
+sequelize.sync(/* {force:true} */)
 	.then(()=> {
 		app.listen(config.port)
 		// console.log(x)
