@@ -1,7 +1,6 @@
 # client
 
 > A Vue.js project
-> > ds
 
 ## Build Setup
 

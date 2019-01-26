@@ -1,8 +1,8 @@
 # client
 
-> A Vue.js project using vue cli 3<br>
+> A Vue.js project using cli 2<br>
 > Backend is based on SQLite<br>
-> Group Members:-<br>
+> Contributers:-<br>
 > > Avais Ahmad <br>
 > > Debashish Deka<br>
 > > Dhananjay Sharma<br>

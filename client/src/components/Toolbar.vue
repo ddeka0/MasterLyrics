@@ -1,8 +1,12 @@
 <template>
 <v-toolbar flat app dark color="primary">
-  <v-toolbar-side-icon>
-    <v-img src="/static/song_icon.png" aspect-ratio="1 "></v-img>
+  <router-link to="/">
+  <v-toolbar-side-icon to="/">
+    <v-img src="/static/song_icon.png" aspect-ratio="1 " contain @click="drclick"> 
+    </v-img>
+    
   </v-toolbar-side-icon>
+  </router-link>
     <v-toolbar-title class="headline ">
         <span class="font-weight-bold">
           MASTER</span>
@@ -10,12 +14,9 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
-    <v-btn depressed color="success">
-      <router-link to="/register" tag="button">Register</router-link>
-    </v-btn>
-    <v-btn depressed color="deep-orange">
-      <router-link to="/login" tag="button">Login</router-link>
-      </v-btn>
+    <v-btn depressed color="success" to="/register"> Register</v-btn>
+
+    <v-btn depressed color="deep-orange" to="/login"> Login </v-btn>
 </v-toolbar>
 
 </template>
@@ -28,6 +29,11 @@
       tb : '',
     }
   },
+  methods: {
+    async drclick () {
+        console.log("clicked")
+    }
+    }
   }
 </script>
 
