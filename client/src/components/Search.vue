@@ -16,7 +16,27 @@
 								full-width background-color="cyan lighten-5"
 							></v-text-field>
 						</v-flex>
-						<br>
+							<v-btn-toggle mandatory flat depressed class="cyan" dark v-model="icon">
+							<v-btn depressed value="English" class="cyan">
+								<v-icon>create</v-icon>
+								English
+							</v-btn>
+							 <v-divider
+								vertical
+								></v-divider>
+							<v-btn depressed value="Hindi" class="cyan">
+								<v-icon>keyboard</v-icon>
+								Hindi
+							</v-btn>
+							<v-divider
+								vertical
+								></v-divider>
+							<v-btn depressed value="Transliterate" class="cyan">
+								<v-icon>translate</v-icon>
+								Transliterate
+							</v-btn>
+							</v-btn-toggle>
+						<br><br>
 					<div class="information" v-html="error"></div>
 					<v-btn depressed dark class="cyan" @click="songSearch">Search</v-btn>
 				</v-container>
@@ -30,11 +50,15 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 import SongSearchService from '@/services/SongSearchService'
+// import { serverBus } from '../main'
+ import { bus } from '../main'
+
 export default {
 	data () {
 		return {
 			songName:"",
-			error: null
+			error: null,
+			icon: "English",
 		}
 	},
 	methods: {
@@ -45,6 +69,10 @@ export default {
 				})
 				console.log(response.data)
 				this.error = response.data
+				// serverBus.$emit('lyr', "response.data")
+				// this.$emit("id", response.data)
+				bus.$emit('tc','aa aa')
+				this.$router.push('/LyricPage')
 			}catch(err) {
 				this.error = err.response.data.error
 			}

@@ -4,7 +4,6 @@
     v-model="drawer"
     class="blue lighten-3"
     dark
-    stateless
     app
   >
     <v-toolbar flat class="transparent">

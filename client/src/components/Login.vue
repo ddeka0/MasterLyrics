@@ -52,6 +52,24 @@
 						You are successfully Logged in!
 						</v-alert>
 
+					<v-snackbar
+						v-model="alert2"
+						top
+						color="success"
+						:multi-line="mode === 'multi-line'"
+						:timeout="timeout"
+						:vertical="mode === 'vertical'"
+						>
+						Login Successful
+						<v-btn
+							dark
+							flat
+							@click="alert2 = false"
+						>
+							Close
+						</v-btn>
+						</v-snackbar>
+
 					<v-btn depressed dark class="deep-orange" @click="login">Login</v-btn>
 				</v-container>
 			</v-form>
@@ -89,6 +107,8 @@ export default {
 				console.log(response.data)
 				// redirect to search page
 				// hide login tab and display user name
+
+				// this.$router.push('/')
 				this.error = ""
 				this.alert = false
 				this.alert2 = true
