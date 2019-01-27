@@ -15,5 +15,8 @@ module.exports = {
 		app.post("/songSearch", 
 		SongSearchController.songSearch)
 
+		app.post("/songSearchId", 
+		SongSearchController.songSearchId)
+
 	}
 }
