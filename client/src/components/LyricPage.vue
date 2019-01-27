@@ -59,9 +59,7 @@
                     <v-container>
                     <v-layout>
                         <v-flex>
-                            cc
                         {{lyric}}
-                        abc
                         </v-flex>
                         
                     </v-layout>
@@ -105,6 +103,8 @@
 
 <script>
 
+import AuthenticationService from '@/services/AuthenticationService'
+import SongSearchService from '@/services/SongSearchService'
 // import { serverBus } from '../main'
  import { bus } from '../main'
   export default {
@@ -112,12 +112,32 @@
   data () {
       return {
           lyric: "हिंदी गाने हिंदी में" ,
-          id: this.$route.params.id
+          id: this.$route.params.id,
+          error: ""
       }
     },
+    methods: {
+		
+	},
 
-    created () {
-    this.lyric = this.lyric + this.id
+    async created () {
+        console.log("mounted function calles")
+        try {
+                    console.log("before await")
+                    const response = await SongSearchService.songSearchId({
+                        id: this.id,
+                    })
+                    console.log("after await")
+                    console.log(response.data.tuple)
+                    console.log("LyricPage Song Id is = ",response.data.id)
+                    console.log("LyricPage Song lyric is = ",response.data.lyrics)
+                    
+                    this.lyric = response.data.lyric
+                    // this.id = response.data.id
+                }catch(err) {
+                    console.log("after error" + err)
+                    this.error = err.response.data.error
+                }
  }
   }
 </script>

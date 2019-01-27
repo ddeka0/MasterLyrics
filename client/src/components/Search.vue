@@ -69,9 +69,9 @@ export default {
 					songName: this.songName,
 				})
 				console.log("Song Id is = ",response.data.id)
-				console.log("Song lyric is = ",response.data.result)
+				console.log("Song lyric is = ",response.data.lyrics)
 				
-				this.error = response.data.result
+				this.error = response.data.lyrics
 				this.id = response.data.id
 
 				// serverBus.$emit('lyr', "response.data")
@@ -82,7 +82,8 @@ export default {
 				this.error = err.response.data.error
 			}
 		}
-	}
+	},
+	
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

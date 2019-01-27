@@ -26,9 +26,6 @@ module.exports = (sequelize, DataTypes)=> {
         Link: {
             type: DataTypes.STRING,
 		},
-		Img_link: {
-			type: DataTypes.STRING,
-		}
     })
     console.log("======= Songs table created =======")
     return table
