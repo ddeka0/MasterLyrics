@@ -60,8 +60,9 @@
                     <v-container>
                     <v-layout>
                         <v-flex>
-                            <v-chip v-for="i in lyric" :key="i.id">
-                                {{i}}
+                            <v-chip v-for="(item, key) in lyJson" v-bind:item="item"
+                                v-bind:key="item.id">
+                                {{key}}
                             </v-chip>
                         </v-flex>
                         
@@ -121,7 +122,8 @@ import SongSearchService from '@/services/SongSearchService'
           artist: "",
           year: "",
           album: "",
-          link: ""
+          link: "",
+          lyJson: null
       }
     },
     methods: {
@@ -149,7 +151,8 @@ import SongSearchService from '@/services/SongSearchService'
                     
                     // removing end quotes from the json
                     this.lyric = this.lyric.replace(new RegExp('""', 'g'), '"')
-                    console.log("Meaning Song lyric is = " + this.lyric)        
+                    this.lyJson = JSON.parse(this.lyric)
+                    console.log("Meaning Song lyric is = " + this.lyJson.हर)        
                 }catch(err) {
                     console.log("after error" + err)
                     this.error = err.response.data.error
