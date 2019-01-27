@@ -6,7 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 client/node_modules/
 server/node_modules/
-server/music.sqlite
+# server/music.sqlite
 # Editor directories and files
 .idea
 .vscode
