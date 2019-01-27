@@ -78,7 +78,7 @@ module.exports = {
 
 				try{
 
-					var finalJson ="{ "+"meaning"+" :[ "
+					var finalJson ="{ "+"\"meaning\""+" :[ "
 					for( var n in results){
 						var word = await Dict.findAll({
 							limit : 1,
@@ -90,7 +90,7 @@ module.exports = {
 
 						if( word.length == 0){
 							// finalJson = finalJson + " { null : "+results[n]+ " }, "
-							finalJson = finalJson + " { "+results[n]+ " : null }, "
+							finalJson = finalJson + " { \""+results[n]+ "\" : null }, "
 						}else{
 
 						// console.log(word)
@@ -98,7 +98,7 @@ module.exports = {
 							
 						// console.log(word[idd].eword)
 								// finalJson = finalJson + " { "+ word[idd].eword+" : "+results[n]+ " }, "
-								finalJson = finalJson + " { "+ results[n]+" : "+word[idd].eword+ " }, "
+								finalJson = finalJson + " { \""+ results[n]+"\" : \""+word[idd].eword+"\" }, "
 						
 						}
 					}

@@ -148,7 +148,7 @@ import SongSearchService from '@/services/SongSearchService'
                     this.lyric = response.data.lyric
                     
                     // removing end quotes from the json
-                    this.lyric = this.lyric.replace(new RegExp('"', 'g'), 'hi')
+                    this.lyric = this.lyric.replace(new RegExp('""', 'g'), '"')
                     console.log("Meaning Song lyric is = " + this.lyric)        
                 }catch(err) {
                     console.log("after error" + err)
