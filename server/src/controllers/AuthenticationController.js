@@ -1,50 +1,59 @@
-const {User} = require("../models")
+const { User } = require("../models")
+const jwt = require("jsonwebtoken")
+const config = require("../config/config")
+
+function jwtSignUser(user) {
+	const ONE_WEEK = 60 * 60 * 24 * 7
+	return jwt.sign(user, config.authentication.jwtSecret, {
+		expiresIn: ONE_WEEK
+	})
+}
+
 module.exports = {
-	register : async function(req,res) {
-		console.log(req.body)
-		let msg = `Register request for ${req.body.email} found`
-		console.log(msg)
+	async register(req, res) {
 		try {
-			const user = await User.create(req.body) 
-			res.send(user.toJSON())
-		}catch(err) {
-			// email already exits
-			res.status(400).send( {
-				error : "This email is alread in use"
+			const user = await User.create(req.body)
+			const userJson = user.toJSON()
+			res.send({
+				user: userJson,
+				token: jwtSignUser(userJson)
+			})
+		} catch (err) {
+			res.status(400).send({
+				error: "This email account is already in use."
 			})
 		}
 	},
-	login : async function(req,res) {
-		console.log(req.body)
-		let msg = `Login request for ${req.body.email} found`
-		console.log(msg)
+	async login(req, res) {
 		try {
-			const {email,password} = req.body
+			const { email, password } = req.body
 			const user = await User.findOne({
 				where: {
 					email: email
 				}
 			})
-			if(!user) {
+
+			if (!user) {
 				return res.status(403).send({
-					error:"The login information was wrong"
+					error: "The login information was incorrect"
 				})
 			}
-			const isPasswordValid = password === user.password
-			if(!isPasswordValid) {
+
+			const isPasswordValid = await user.comparePassword(password)
+			if (!isPasswordValid) {
 				return res.status(403).send({
-					error:"The login information was wrong"
+					error: "The login information was incorrect"
 				})
 			}
+
 			const userJson = user.toJSON()
 			res.send({
-				msg: "The use was found OK !!",
-				user: userJson
+				user: userJson,
+				token: jwtSignUser(userJson)
 			})
-		}catch(err) {
-			// email already exits
-			res.status(500).send( {
-				error : "This email is alread in use"
+		} catch (err) {
+			res.status(500).send({
+				error: "An error has occured trying to log in"
 			})
 		}
 	}

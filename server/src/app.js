@@ -22,9 +22,8 @@ routes.setRoutes(app)
 
 //sequelize.sequelize.sync
 
-sequelize.sync(/* {force:true} */)
+sequelize.sync()
 	.then(()=> {
 		app.listen(config.port)
-		// console.log(x)
 		console.log(`Server started on port ${config.port}`)
 	})

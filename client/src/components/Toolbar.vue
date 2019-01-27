@@ -14,9 +14,17 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
-    <v-btn depressed color="success" to="/register"> Register</v-btn>
+    <v-btn
+	v-if = "!$store.state.isUserLoggedIn" 
+	depressed color="success" to="/register"> Register</v-btn>
 
-    <v-btn depressed color="deep-orange" to="/login"> Login </v-btn>
+    <v-btn
+	v-if = "!$store.state.isUserLoggedIn" 
+	depressed color="deep-orange" to="/login"> Login </v-btn>
+
+	<v-btn
+	v-if = "$store.state.isUserLoggedIn" 
+	depressed color="deep-orange" @click="logout"> LogOut </v-btn>
 </v-toolbar>
 
 </template>
@@ -32,7 +40,14 @@
   methods: {
     async drclick () {
         console.log("clicked")
-    }
+	},
+	logout () {
+		this.$store.dispatch("setToken", null)
+		this.$store.dispatch("setUser", null)
+		this.$router.push({
+			name:"search"
+		})
+	}
     }
   }
 </script>
