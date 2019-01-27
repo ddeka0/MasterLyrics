@@ -21,11 +21,14 @@ module.exports = (sequelize, DataTypes)=> {
             type: DataTypes.INTEGER,
         },
         Lyric: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
         },
         Link: {
             type: DataTypes.STRING,
-        }
+		},
+		Img_link: {
+			type: DataTypes.STRING,
+		}
     })
     console.log("======= Songs table created =======")
     return table
