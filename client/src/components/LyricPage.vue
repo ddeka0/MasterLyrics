@@ -60,7 +60,9 @@
                     <v-container>
                     <v-layout>
                         <v-flex>
-                        {{lyric}}
+                            <v-chip v-for="i in lyric" :key="i.id">
+                                {{i}}
+                            </v-chip>
                         </v-flex>
                         
                     </v-layout>
@@ -112,7 +114,7 @@ import SongSearchService from '@/services/SongSearchService'
   name: 'LyricPage',
   data () {
       return {
-          lyric: "हिंदी गाने हिंदी में" ,
+          lyric: null ,
           id: this.$route.params.id,
           error: "",
           name: "",
@@ -136,14 +138,18 @@ import SongSearchService from '@/services/SongSearchService'
                     console.log("after await")
                     console.log(response.data.tuple)
                     console.log("LyricPage Song Id is = ",response.data.id)
-                    console.log("LyricPage Song lyric is = ",response.data.lyrics)
+                    console.log("LyricPage Song lyric is = ",response.data.lyric)
                     
                     this.name = response.data.tuple.songNameEng
                     this.artist = response.data.tuple.Artist
                     this.album = response.data.tuple.Album
                     this.year = response.data.tuple.Year
                     this.link = response.data.tuple.Link
-                    // this.id = response.data.id
+                    this.lyric = response.data.lyric
+                    
+                    // removing end quotes from the json
+                    this.lyric = this.lyric.replace(new RegExp('"', 'g'), 'hi')
+                    console.log("Meaning Song lyric is = " + this.lyric)        
                 }catch(err) {
                     console.log("after error" + err)
                     this.error = err.response.data.error

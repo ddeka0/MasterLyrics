@@ -89,14 +89,16 @@ module.exports = {
 						})
 
 						if( word.length == 0){
-							finalJson = finalJson + " { null : "+results[n]+ " }, "
+							// finalJson = finalJson + " { null : "+results[n]+ " }, "
+							finalJson = finalJson + " { "+results[n]+ " : null }, "
 						}else{
 
 						// console.log(word)
 						for (var idd in word) {
 							
 						// console.log(word[idd].eword)
-								finalJson = finalJson + " { "+ word[idd].eword+" : "+results[n]+ " }, "
+								// finalJson = finalJson + " { "+ word[idd].eword+" : "+results[n]+ " }, "
+								finalJson = finalJson + " { "+ results[n]+" : "+word[idd].eword+ " }, "
 						
 						}
 					}
@@ -114,6 +116,9 @@ module.exports = {
 						}
 						console.log(newRes)
 						res.send(newRes)
+
+						// //removing ending quotes form final json
+						// finalJson=finalJson.replace(new RegExp("\"", "g"), "hi");
 						
 						// console.log(results)
 						//res.send(results)
