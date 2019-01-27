@@ -1,7 +1,7 @@
 <template>
 <v-container  app >
 	<v-layout row wrap>
-		<v-flex flat>
+		<v-flex offset-xs2 >
             <div >
             <v-timeline >
                 <v-timeline-item
@@ -111,18 +111,13 @@
   name: 'LyricPage',
   data () {
       return {
-          lyric: "हिंदी गाने हिंदी में" 
+          lyric: "हिंदी गाने हिंदी में" ,
+          id: this.$route.params.id
       }
     },
 
     created () {
-  // Using the server bus
-//   serverBus.$on('lry', (lyric) => {
-//    this.lyric = lyric
-//   })
-    bus.$on('tc', (data) => {
-        this.lyric = data
-    })
+    this.lyric = this.lyric + this.id
  }
   }
 </script>

@@ -59,6 +59,7 @@ export default {
 			songName:"",
 			error: null,
 			icon: "English",
+			id: ""
 		}
 	},
 	methods: {
@@ -67,12 +68,16 @@ export default {
 				const response = await SongSearchService.songSearch({
 					songName: this.songName,
 				})
-				console.log(response.data)
-				this.error = response.data
+				console.log("Song Id is = ",response.data.id)
+				console.log("Song lyric is = ",response.data.result)
+				
+				this.error = response.data.result
+				this.id = response.data.id
+
 				// serverBus.$emit('lyr', "response.data")
 				// this.$emit("id", response.data)
-				bus.$emit('tc','aa aa')
-				this.$router.push('/LyricPage')
+				// bus.$emit('tc','aa aa')
+				this.$router.push('/LyricPage/' + this.id)
 			}catch(err) {
 				this.error = err.response.data.error
 			}
