@@ -26,7 +26,7 @@ export default new Router({
   component: Register
 },
 {
-  path: "/LyricPage",
+  path: "/LyricPage/:id",
   name: "LyricPage",
   component: LyricPage
 },
