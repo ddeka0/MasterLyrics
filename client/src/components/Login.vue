@@ -97,6 +97,14 @@ export default {
 			}
 			}
 	},
+	beforeCreate: function () {
+		const exits = localStorage.getItem("state") 
+		if(exits) {
+			console.log(localStorage.getItem("state"))
+			console.log(localStorage.getItem("userEmail"))
+			this.$router.push("/")
+		}
+	},
 	methods: {
 		async login () {
 			try {
@@ -104,16 +112,17 @@ export default {
 					email: this.email,
 					password: this.password
 				})
-				console.log(response.data)
+				console.log("login response form server : ",response.data)
 				// redirect to search page
 				// hide login tab and display user name
-
-				// this.$router.push('/')
+				this.$store.dispatch("login",this.email)
+				this.$router.push('/')
 				this.error = ""
 				this.alert = false
 				this.alert2 = true
 			}catch(err) {
-				this.error = err.response.data.error
+				console.log(err.response)
+				this.error = err.response.data.error /* err.response.data.error */
 				this.alert2 = false
 				this.alert = true
 			}

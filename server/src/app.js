@@ -17,7 +17,7 @@ app.use(session({
 	secret: SESS_SECRET,
 	cookie: {
 		maxAge: SESS_LIFETIME,
-		sameSite: true,
+		sameSite: false,
 		secure: IN_PROD
 	} 
 }))
@@ -34,12 +34,35 @@ app.use(bodyParser.urlencoded({
 }))
 
 
-//app.use(express.bodyParser())
-app.use(cors())
+// app.use(express.bodyParser())
 
 routes.setRoutes(app)
 
+const corsOptions = {
+	origin: "http://localhost:8080",
+	credentials: true
+}
+
+
+
+app.use(function(req, res, next) {
+	res.setHeader("Access-Control-Allow-Origin", "http://localhost:8080");
+	
+    // Request methods you wish to allow
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
+	
+    // Request headers you wish to allow
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
+	
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader("Access-Control-Allow-Credentials", true);
+	
+    // Pass to next layer of middleware
+    next();
+});
 //sequelize.sequelize.sync
+app.use(cors(corsOptions))
 
 sequelize.sync(/*{force:true}*/)
 	.then(()=> {

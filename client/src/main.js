@@ -7,7 +7,7 @@ import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import '@mdi/font/css/materialdesignicons.css'
 import vueResource from 'vue-resource'
-
+import { store } from "./store/store"
 Vue.config.productionTip = false
 Vue.use(vueResource)
 
@@ -20,6 +20,7 @@ Vue.use(Vuetify, {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store: store,
   router,
   components: { App },
   template: '<App/>'
