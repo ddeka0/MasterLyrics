@@ -111,7 +111,7 @@
   name: 'LyricPage',
   data () {
       return {
-          lyric: null 
+          lyric: "हिंदी गाने हिंदी में" 
       }
     },
 
