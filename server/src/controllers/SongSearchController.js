@@ -12,15 +12,23 @@ module.exports = {
 			//const song = await Song.create(req.body) 
 			const songs = await Song.findAll({
 				where: {
-					songName: req.body.songName
+					songNameEng: req.body.songName
 				}
 			})
-			// console.log(songs)
+			console.log(songs)
 			var arr = []
 			for (var id in songs) {
-				console.log(songs[id].lyric)
-				res.send(songs[id].lyric)
+			var results = songs[id].Lyric.match(/("[^"]+"|[^"\s]+)/g)
+			console.log(results)
+			res.send(results)
 			}
+			// var arr = []
+			// for (var id in songs) {
+			// 	console.log(songs[id].lyric)
+			// 	res.send(songs[id].lyric)
+			// }
+
+			
 			//User.run("INSERT INTO User (songName) Values (\"abs\")")
 		}catch(err) {
 			// email already exits
