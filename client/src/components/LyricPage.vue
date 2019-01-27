@@ -9,7 +9,7 @@
                 fill-dot
                 left
                 >
-                <v-card>
+                <v-card color="purple" class="white--text">
                     <v-card-title class="purple lighten-2 justify-end">
                     <v-icon
                         dark
@@ -22,17 +22,18 @@
                     </v-card-title>
                     <v-container>
                     <v-layout>
-                        <!-- <v-flex xs5>
-                        <v-img src="/static/song_icon.png"  contain @click="drclick"> 
+                        <v-flex xs5>
+                        <v-img src="/static/album.jpg" contain > 
                          </v-img>
-                        </v-flex>    -->
-                        <v-flex >
-                            
-                            <p align="left">
-                        Song Name: <br>
-                        Album: <br>
-                        Artist: <br>
-                            </p>
+                        </v-flex> 
+                        <v-spacer></v-spacer>
+                        <v-flex align="left">
+                        <div align="left">          
+                            <div class="headline"> {{name}} </div> <br>
+                            <div><b>Album:</b> {{album}}</div>
+                            <div><b>Artist:</b> {{artist}}</div>
+                            <div><b>Year:</b> {{year}}</div>
+                        </div>   
                         </v-flex>
 
                     </v-layout>
@@ -113,7 +114,12 @@ import SongSearchService from '@/services/SongSearchService'
       return {
           lyric: "हिंदी गाने हिंदी में" ,
           id: this.$route.params.id,
-          error: ""
+          error: "",
+          name: "",
+          artist: "",
+          year: "",
+          album: "",
+          link: ""
       }
     },
     methods: {
@@ -132,7 +138,11 @@ import SongSearchService from '@/services/SongSearchService'
                     console.log("LyricPage Song Id is = ",response.data.id)
                     console.log("LyricPage Song lyric is = ",response.data.lyrics)
                     
-                    this.lyric = response.data.lyric
+                    this.name = response.data.tuple.songNameEng
+                    this.artist = response.data.tuple.Artist
+                    this.album = response.data.tuple.Album
+                    this.year = response.data.tuple.Year
+                    this.link = response.data.tuple.Link
                     // this.id = response.data.id
                 }catch(err) {
                     console.log("after error" + err)
