@@ -2,17 +2,20 @@ const {User} = require("../models")
 const session = require("express-session")
 module.exports = {
 	register : async function(req,res) {
-		console.log(req.body)
-		let msg = `Register request for ${req.body.email} found`
-		console.log(msg)
-		try {
-			const user = await User.create(req.body) 
-			res.send(user.toJSON())
-		}catch(err) {
-			// email already exits
-			res.status(400).send( {
-				error : "This email is alread in use"
-			})
+		const userId = req.session.userId
+		if(!userId) {
+			console.log(req.body)
+			let msg = `Register request for ${req.body.email} found`
+			console.log(msg)
+			try {
+				const user = await User.create(req.body) 
+				res.send(user.toJSON())
+			}catch(err) {
+				// email already exits
+				res.status(400).send( {
+					error : "This email is alread in use"
+				})
+			}
 		}
 	},
 	login : async function(req,res) {
@@ -62,7 +65,8 @@ module.exports = {
 		}else {
 			console.log(`user ${req.body.email} is already logged in`)
 			res.send({
-				status: "Session is already created !!"
+				isLoggedIn: true,
+				error:`user ${req.body.email} is already logged in`
 			})
 		}
 
