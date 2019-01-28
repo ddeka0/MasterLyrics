@@ -4,7 +4,7 @@ const AuthenticationControllerPolicy = require("./policies/AuthenticationControl
 module.exports = {
 	setRoutes : function(app) {
 		console.log("Routes are setting up...\n\n")
-		
+
 		app.post("/register",
 		AuthenticationControllerPolicy.register,
 		AuthenticationController.register),
@@ -14,6 +14,9 @@ module.exports = {
 
 		app.post("/songSearch", 
 		SongSearchController.songSearch)
+
+		app.post("/songSearchId", 
+		SongSearchController.songSearchId)
 
 	}
 }

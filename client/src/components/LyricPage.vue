@@ -9,7 +9,7 @@
                 fill-dot
                 left
                 >
-                <v-card>
+                <v-card color="purple" class="white--text">
                     <v-card-title class="purple lighten-2 justify-end">
                     <v-icon
                         dark
@@ -22,17 +22,18 @@
                     </v-card-title>
                     <v-container>
                     <v-layout>
-                        <!-- <v-flex xs5>
-                        <v-img src="/static/song_icon.png"  contain @click="drclick"> 
+                        <v-flex xs5>
+                        <v-img src="/static/album.jpg" contain > 
                          </v-img>
-                        </v-flex>    -->
-                        <v-flex >
-                            
-                            <p align="left">
-                        Song Name: <br>
-                        Album: <br>
-                        Artist: <br>
-                            </p>
+                        </v-flex> 
+                        <v-spacer></v-spacer>
+                        <v-flex align="left">
+                        <div align="left">          
+                            <div class="headline"> {{name}} </div> <br>
+                            <div><b>Album:</b> {{album}}</div>
+                            <div><b>Artist:</b> {{artist}}</div>
+                            <div><b>Year:</b> {{year}}</div>
+                        </div>   
                         </v-flex>
 
                     </v-layout>
@@ -41,12 +42,12 @@
                 </v-timeline-item>
 
                 <v-timeline-item
-                color="amber lighten-1"
+                color="amber lighten-2"
                 fill-dot
                 right
                 small
                 >
-                <v-card>
+                <v-card color="amber darken-3" class="white--text">
                     <v-card-title class="amber lighten-1">
                     <h2 class="display-1 mr-3 white--text font-weight-light">Lyric</h2>
                     <v-icon
@@ -59,9 +60,21 @@
                     <v-container>
                     <v-layout>
                         <v-flex>
-                            cc
-                        {{lyric}}
-                        abc
+                            <v-chip class="subheading font-weight-medium" 
+                                    color="amber darken-3" 
+                                    dark 
+                                    @click="chip=!chip"
+                                    @input="key=lyJson[key]"
+                                    v-for="(item, key) in lyJson" 
+                                    v-bind:item="item"
+                                    v-bind:key="item.id">
+                                    <div v-if="chip==true">
+                                        {{key}} 
+                                    </div>
+                                     <div v-else>
+                                        {{lyJson[key]}}
+                                    </div>
+                            </v-chip>
                         </v-flex>
                         
                     </v-layout>
@@ -105,19 +118,57 @@
 
 <script>
 
+import AuthenticationService from '@/services/AuthenticationService'
+import SongSearchService from '@/services/SongSearchService'
 // import { serverBus } from '../main'
  import { bus } from '../main'
   export default {
   name: 'LyricPage',
   data () {
       return {
-          lyric: "हिंदी गाने हिंदी में" ,
-          id: this.$route.params.id
+          lyric: null ,
+          id: this.$route.params.id,
+          error: "",
+          name: "",
+          artist: "",
+          year: "",
+          album: "",
+          link: "",
+          lyJson: null,
+          chip: true
       }
     },
+    methods: {
+		
+	},
 
-    created () {
-    this.lyric = this.lyric + this.id
+    async created () {
+        console.log("mounted function calles")
+        try {
+                    console.log("before await")
+                    const response = await SongSearchService.songSearchId({
+                        id: this.id,
+                    })
+                    console.log("after await")
+                    console.log(response.data.tuple)
+                    console.log("LyricPage Song Id is = ",response.data.id)
+                    console.log("LyricPage Song lyric is = ",response.data.lyric)
+                    
+                    this.name = response.data.tuple.songNameEng
+                    this.artist = response.data.tuple.Artist
+                    this.album = response.data.tuple.Album
+                    this.year = response.data.tuple.Year
+                    this.link = response.data.tuple.Link
+                    this.lyric = response.data.lyric
+                    
+                    // removing end quotes from the json
+                    this.lyric = this.lyric.replace(new RegExp('""', 'g'), '"')
+                    this.lyJson = JSON.parse(this.lyric)
+                    console.log("Meaning Song lyric is = " + this.lyJson.हर)        
+                }catch(err) {
+                    console.log("after error" + err)
+                    this.error = err.response.data.error
+                }
  }
   }
 </script>
