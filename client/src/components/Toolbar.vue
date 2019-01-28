@@ -62,7 +62,7 @@ import AuthenticationService from '@/services/AuthenticationService'
 			console.log("logout response form server : ",response.data)
 			
 			// this.$store.dispatch("login",this.email)
-			this.$router.push('/')
+			this.$router.push('/login')
 			this.error = ""
 			this.alert = false
 			this.alert2 = true
