@@ -42,12 +42,12 @@
                 </v-timeline-item>
 
                 <v-timeline-item
-                color="amber lighten-1"
+                color="amber lighten-2"
                 fill-dot
                 right
                 small
                 >
-                <v-card>
+                <v-card color="amber darken-3" class="white--text">
                     <v-card-title class="amber lighten-1">
                     <h2 class="display-1 mr-3 white--text font-weight-light">Lyric</h2>
                     <v-icon
@@ -60,9 +60,20 @@
                     <v-container>
                     <v-layout>
                         <v-flex>
-                            <v-chip v-for="(item, key) in lyJson" v-bind:item="item"
-                                v-bind:key="item.id">
-                                {{key}}
+                            <v-chip class="subheading font-weight-medium" 
+                                    color="amber darken-3" 
+                                    dark 
+                                    @click="chip=!chip"
+                                    @input="key=lyJson[key]"
+                                    v-for="(item, key) in lyJson" 
+                                    v-bind:item="item"
+                                    v-bind:key="item.id">
+                                    <div v-if="chip==true">
+                                        {{key}} 
+                                    </div>
+                                     <div v-else>
+                                        {{lyJson[key]}}
+                                    </div>
                             </v-chip>
                         </v-flex>
                         
@@ -123,7 +134,8 @@ import SongSearchService from '@/services/SongSearchService'
           year: "",
           album: "",
           link: "",
-          lyJson: null
+          lyJson: null,
+          chip: true
       }
     },
     methods: {
