@@ -87,7 +87,7 @@
                 fill-dot
                 left
                 >
-                <v-card>
+                <v-card height=450 width=640>
                     <v-card-title class="cyan lighten-1 justify-end">
                     <v-icon
                         class="mr-3"
@@ -102,7 +102,10 @@
                     <v-layout>
                         <v-flex
                         >
-                        Lorem ipsum dolor sit amet, no nam oblique veritus no nam oblique.
+                        <div id="vid">
+                            <youtube :video-id="link" width=100% height=350 />
+                            
+                        </div>
                         </v-flex>
                     </v-layout>
                     </v-container>
@@ -135,7 +138,8 @@ import SongSearchService from '@/services/SongSearchService'
           album: "",
           link: "",
           lyJson: null,
-          chip: true
+          chip: true,
+          vid_id: ''
       }
     },
     methods: {

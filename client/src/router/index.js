@@ -4,8 +4,20 @@ import Search from '@/components/Search'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import LyricPage from '@/components/LyricPage'
+import VueYoutube from 'vue-youtube'
+
+Vue.use(VueYoutube)
+
+Vue.config.productionTip = false
 
 Vue.use(Router)
+
+// eslint-disable-next-line
+new Vue({
+  el: '#vid',
+  template: '<LyricPage/>',
+  components: { LyricPage }
+})
 
 export default new Router({
   mode: 'history',
