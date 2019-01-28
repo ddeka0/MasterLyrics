@@ -1,5 +1,5 @@
 <template>
-<v-container  app >
+<v-container app >
 	<v-layout row wrap>
 		<v-flex offset-xs2 >
             <div >
@@ -87,7 +87,7 @@
                 fill-dot
                 left
                 >
-                <v-card height=450 width=640>
+                <v-card color="cyan darken-3" class="white--text" height=450 >
                     <v-card-title class="cyan lighten-1 justify-end">
                     <v-icon
                         class="mr-3"
