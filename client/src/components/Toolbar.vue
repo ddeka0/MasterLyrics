@@ -13,10 +13,15 @@
         <span class="font-weight-medium">लिरिक्स</span>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-
+    <div v-if="session==false"> 
     <v-btn depressed color="success" to="/register"> Register</v-btn>
 
     <v-btn depressed color="deep-orange" to="/login"> Login </v-btn>
+    </div>
+    <div v-if="session==true">
+      <v-btn depressed color="error" to="/logout"> Logout</v-btn>
+    </div>
+
 </v-toolbar>
 
 </template>
@@ -27,14 +32,16 @@
   data () {
     return {
       tb : '',
+      session: false
     }
   },
   methods: {
     async drclick () {
         console.log("clicked")
     }
-    }
+    },
   }
+
 </script>
 
 <style scoped>
