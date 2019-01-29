@@ -2,6 +2,7 @@
 <v-app>
   <toolbar></toolbar>
   <nav-drawer></nav-drawer>
+  <!-- <about></about> -->
 	<div id="app">
 		<router-view></router-view>
 
@@ -16,13 +17,15 @@
 import Toolbar from './components/Toolbar'
 import FooterComp from './components/Footer'
 import navDrawer from './components/navDrawer'
+import About from './components/About'
 
 export default {
   name: 'App',
   components: {
     Toolbar,
     FooterComp,
-    navDrawer
+    navDrawer,
+    About
   }
 }
 </script>

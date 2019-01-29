@@ -34,8 +34,8 @@
 
       <v-list-tile
         v-for="item in items"
+        @click="item.action"
         :key="item.title"
-        @click="drclick()"
         :to="item.to"
       >
         <v-list-tile-action>
@@ -46,29 +46,56 @@
           <v-list-tile-title>{{ item.title }}</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
+
+      <v-list-tile
+        @click="drclick ()"
+      >
+        <v-list-tile-action>
+          <v-icon>info</v-icon>
+        </v-list-tile-action>
+
+        <v-list-tile-content>
+          <v-list-tile-title>About</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+
     </v-list>
+    <about v-bind:dialog="dialog" ></about>
   </v-navigation-drawer>
 </template>
 
 <script>
 
+import About from './About'
+
   export default {
   name: 'navDrawer',
+   components: {
+    About
+  },
+  props:{
+    // about dialog box
+    dialog:{
+      type:Boolean,
+      default: false
+    },
+  },
   data () {
       return {
           drawer: true,
         items: [
-          { to: '/' , title: 'Home', icon: 'home' },
-          { title: 'A to Z list', icon: 'sort_by_alpha' },
-          { title: 'About', icon: 'info' }
+          { title: 'Home', icon: 'home' , to: '/' },
+          { title: 'A to Z list', icon: 'sort_by_alpha' }
+          // { title: 'About', icon: 'info'  }
         ],
         mini :true,
-        right: null
+        right: null,
       }
     },
     methods: {
-    async drclick () {
- 
+    drclick () {
+        this.dialog = false
+        this.dialog = true
     }
     }
   }
