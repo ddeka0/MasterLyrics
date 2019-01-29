@@ -15,7 +15,7 @@ export const store = new Vuex.Store({
 	},
 	plugins:[vuexLocal.plugin],
 	mutations: {
-		LOGIN: (state,email) => {
+		LOGIN: (state, email) => {
 			state.isLoggedIn = true
 			state.userEmail = email
 			localStorage.setItem("state",state.isLoggedIn.toString())

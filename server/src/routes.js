@@ -12,6 +12,9 @@ module.exports = {
 		app.post("/login", 
 		AuthenticationController.login)
 
+		app.post("/logout", 
+		AuthenticationController.logout)
+
 		app.post("/songSearch", 
 		SongSearchController.songSearch)
 

@@ -7,6 +7,9 @@ export default {
 	login (credentials) {
 		return Api().post("login", credentials)
 	},
+	logout (credentials) {
+		return Api().post("logout", credentials)
+	},
 	songSearch (credentials) {
 		return Api().post("songSearch", credentials)
 	}
