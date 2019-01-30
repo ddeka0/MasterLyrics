@@ -9,7 +9,9 @@
     <v-toolbar flat class="transparent">
       <v-list class="pa-0">
         <v-list-tile avatar>
-          <v-btn icon color="primary">
+          <v-btn icon color="primary"
+          @click.stop="mini = !mini , dialog = false"
+          >
             <v-icon>view_list</v-icon>
           </v-btn>
 
@@ -20,7 +22,7 @@
           <v-list-tile-action>
             <v-btn
               icon
-              @click.stop="mini = !mini"
+              @click.stop="mini = !mini , dialog = false"
             >
               <v-icon>chevron_left</v-icon>
             </v-btn>
@@ -48,7 +50,7 @@
       </v-list-tile>
 
       <v-list-tile
-        @click="drclick ()"
+        @click="aboutClick ()"
       >
         <v-list-tile-action>
           <v-icon>info</v-icon>
@@ -93,7 +95,7 @@ import About from './About'
       }
     },
     methods: {
-    drclick () {
+    aboutClick () {
         this.dialog = false
         this.dialog = true
     }

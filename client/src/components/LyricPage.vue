@@ -3,7 +3,7 @@
 	<v-layout row wrap>
 		<v-flex offset-xs2 >
             <div >
-            <v-timeline >
+            <v-timeline class="Toffset">
                 <v-timeline-item
                 color="purple lighten-2"
                 fill-dot
@@ -178,5 +178,5 @@ import SongSearchService from '@/services/SongSearchService'
 </script>
 
 <style scoped>
-
+.Toffset {bottom: 40px}
 </style>
