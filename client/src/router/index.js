@@ -4,6 +4,7 @@ import Search from '@/components/Search'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import LyricPage from '@/components/LyricPage'
+import AZlist from '@/components/AZlist'
 import VueYoutube from 'vue-youtube'
 
 Vue.use(VueYoutube)
@@ -41,6 +42,11 @@ export default new Router({
   path: "/LyricPage/:id",
   name: "LyricPage",
   component: LyricPage
+},
+{
+  path: "/AZlist",
+  name: "AZlist",
+  component: AZlist
 },
   ]
 })

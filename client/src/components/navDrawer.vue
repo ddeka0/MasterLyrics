@@ -69,6 +69,7 @@
 <script>
 
 import About from './About'
+//  import About from './EditAdd'
 
   export default {
   name: 'navDrawer',
@@ -87,7 +88,7 @@ import About from './About'
           drawer: true,
         items: [
           { title: 'Home', icon: 'home' , to: '/' },
-          { title: 'A to Z list', icon: 'sort_by_alpha' }
+          { title: 'A to Z list', icon: 'sort_by_alpha' , to: '/AZlist' }
           // { title: 'About', icon: 'info'  }
         ],
         mini :true,

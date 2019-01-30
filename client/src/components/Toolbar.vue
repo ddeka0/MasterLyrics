@@ -7,7 +7,7 @@
     
   </v-toolbar-side-icon>
   </router-link>
-    <v-toolbar-title class="headline ">
+    <v-toolbar-title class="headline">
         <span class="font-weight-bold">
           MASTER</span>
         <span class="font-weight-medium">लिरिक्स</span>
@@ -23,12 +23,17 @@
 	depressed color="deep-orange" to="/login"> Login </v-btn>
     </div>
     <div>
+
+		 <v-chip v-if="$store.state.isLoggedIn" label color="primary" text-color="white">
+			 Welcome&nbsp;<b>{{email}}</b> !
+    </v-chip>
 	  <v-btn
 	  v-if="$store.state.isLoggedIn" 
 	  depressed color="success" @click="edit"> Edit</v-btn>
       <v-btn
 	  v-if="$store.state.isLoggedIn" 
 	  depressed color="error" @click="logout"> Logout</v-btn>
+		<edit-add v-bind:dialog="dialog"></edit-add>
     </div>
 
 </v-toolbar>
@@ -37,12 +42,24 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import EditAdd from './EditAdd'
   export default {
-  name: 'toolbar',
+	name: 'toolbar',
+	components: {
+    EditAdd
+	},
+	props:{
+    // about dialog box
+    dialog:{
+      type:Boolean,
+      default: false
+		},
+	},
   data () {
     return {
       tb : '',
-      session: false
+			session: false,
+			email: this.$store.state.userEmail
     }
   },
   methods: {
@@ -74,9 +91,8 @@ import AuthenticationService from '@/services/AuthenticationService'
 		}
 	},
 	edit () {
-		this.$router.push({
-			name:"LyricPage"
-		})
+			this.dialog = false
+      this.dialog = true
 	}
     },
   }

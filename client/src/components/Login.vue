@@ -103,6 +103,7 @@ export default {
 			console.log(localStorage.getItem("state"))
 			console.log(localStorage.getItem("userEmail"))
 			this.$router.push("/")
+			this.alert2 = true
 		}
 	},
 	methods: {
