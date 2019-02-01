@@ -21,5 +21,8 @@ module.exports = {
 		app.post("/songSearchId", 
 		SongSearchController.songSearchId)
 
+		app.post("/AZlistSearch", 
+		SongSearchController.AZlistSearch)
+
 	}
 }

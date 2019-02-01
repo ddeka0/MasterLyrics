@@ -5,5 +5,8 @@ export default {
 	},
 	songSearchId (credentials) {
 		return Api().post("songSearchId", credentials)
+	},
+	AZlistSearch (credentials) {
+		return Api().post("AZlistSearch", credentials)
 	}
 }

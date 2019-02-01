@@ -147,5 +147,26 @@ module.exports = {
 				error : "Song not found in Database"
 			})
 		}
-	}
+	},
+	AZlistSearch : async function(req,res) {
+		console.log(Song)
+		console.log(req.body)
+		let msg = `Request for ${req.body.ch} found`
+		// console.log("xxxxxxxxxxxx" +req.body.ch)
+		console.log(msg)
+		try {
+
+			const songs = await Song.findAll({
+				where: {
+					Character: req.body.ch
+				}
+			})
+			res.send(songs) 
+		}catch(err) {
+			console.log(err)
+			res.status(400).send( {
+				error : "error"
+			})
+		}
+	},
 }
