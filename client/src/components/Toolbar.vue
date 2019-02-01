@@ -67,6 +67,7 @@ import EditAdd from './EditAdd'
         console.log("clicked")
 	},
 	async logout () {
+		this.dialog = false
 		this.$store.dispatch("LOGIN", null)
 		this.$store.state.isLoggedIn = false
 		window.localStorage.clear()
