@@ -20,14 +20,14 @@
 
         <v-card-text>
          <v-text-field
-            v-model="email"
+            v-model="hword"
             label="Hindi"
             required
             full-width background-color="success lighten-5"
         ></v-text-field>
 
         <v-text-field
-            v-model="email"
+            v-model="eword"
             label="English"
             required
             full-width background-color="success lighten-5"
@@ -49,7 +49,7 @@
 
           <v-btn
             flat="flat"
-            @click="dialog = false"
+            @click="editMeaning"
             class= "success"
           >
             Confirm
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-
+import DictionaryService from '@/services/DictionaryService'
 export default {
 name: 'EditAdd',
   props:{
@@ -72,7 +72,30 @@ name: 'EditAdd',
       type:Boolean,
       default: false
     },
-  }
+  },
+  data () {
+	  return {
+		  eword:"",
+		  hword:""
+	  }
+  },
+  methods: {
+		async editMeaning () {
+			try {
+				this.dialog = false
+				const response = await DictionaryService.editMeaning({
+					eword: this.eword,
+					hword: this.hword
+				})
+				console.log("login response form server : ",response.data)
+				// redirect to search page
+				// hide login tab and display user name
+			}catch(err) {
+				console.log(err.response)
+				this.error = err.response.data.error /* err.response.data.error */
+			}
+		}
+	}
 }
 
 </script>
