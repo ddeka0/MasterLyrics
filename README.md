@@ -1,12 +1,11 @@
 # MASTER लिरिक्स
 
 
-![Demo](https://www.youtube.com/watch?v=7JOZ_9MisoQ)
 
 #### Demo:
 
-https://www.youtube.com/watch?v=7JOZ_9MisoQ
 
+[![Watch the video](https://img.youtube.com/vi/7JOZ_9MisoQ/hqdefault.jpg)](https://youtu.be/7JOZ_9MisoQ)
 
 
 > A Vue.js project using cli 2<br>
